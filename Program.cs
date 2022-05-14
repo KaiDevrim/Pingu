@@ -1,24 +1,11 @@
-﻿using Discord;
-using Discord.WebSocket;
-
-public class Program
+﻿public class Program
 {
-    public static Task Main(string[] args) => new Program().MainAsync();
-    private DiscordSocketClient _client;
-    public async Task MainAsync()
-    {
-        _client = new DiscordSocketClient();
-        _client.Log += Log;
-        string token = File.ReadAllText(".env");
+    private const long guildId = 974523363231924234;
+    string token = File.ReadAllText("../../../.env");
+    static void Main(string[] args) => MainAsync().GetAwaiter().GetResult();
 
-        await _client.LoginAsync(TokenType.Bot, token);
-        await _client.StartAsync();
-
-        await Task.Delay(-1);
-    }
-    private Task Log(LogMessage msg)
+    static async Task MainAsync()
     {
-        Console.WriteLine(msg.ToString());
-        return Task.CompletedTask;
+        
     }
 }
